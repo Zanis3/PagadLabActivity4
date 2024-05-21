@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class AverageCalculator extends AppCompatActivity {
 
     TextView txtEnglish, txtMath, txtScience, txtMAPEH, txtFilipino;
-    Button btnCompute, btnBackToMenu;
+    Button btnCompute, btnBackToMenu, btnClearGrades;
     Intent calculate;
     Double mathGrade, englishGrade, scienceGrade, mapehGrade, filipinoGrade;
     @Override
@@ -38,11 +38,13 @@ public class AverageCalculator extends AppCompatActivity {
 
         btnCompute = findViewById(R.id.btnCompute);
         btnBackToMenu = findViewById(R.id.btnBackToMenu);
+        btnClearGrades = findViewById(R.id.btnClearGrades);
 
         calculate = new Intent(this, AverageResult.class);
 
         backToMenu();
         calculateAverage();
+        clearGrades();
     }
 
     public void backToMenu(){
@@ -50,6 +52,16 @@ public class AverageCalculator extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
+        });
+    }
+
+    public void clearGrades(){
+        btnClearGrades.setOnClickListener(v -> {
+            txtEnglish.setText("");
+            txtMath.setText("");
+            txtScience.setText("");
+            txtMAPEH.setText("");
+            txtFilipino.setText("");
         });
     }
 

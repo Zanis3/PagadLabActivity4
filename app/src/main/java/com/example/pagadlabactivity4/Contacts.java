@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Contacts extends AppCompatActivity {
 
     ListView lvContactList;
-    Button btnAddContact;
+    Button btnAddContact, btnGoBackBack;
     ArrayList<String> name, contactNum, email;
     ArrayList<Integer> age;
     ArrayAdapter contactListAdapter, contactListNumberAdapter;
@@ -37,6 +37,7 @@ public class Contacts extends AppCompatActivity {
 
         lvContactList = findViewById(R.id.lvContactList);
         btnAddContact = findViewById(R.id.btnAddContact);
+        btnGoBackBack = findViewById(R.id.btnGoBackBack);
 
         name = new ArrayList<>();
         contactNum = new ArrayList<>();
@@ -54,6 +55,7 @@ public class Contacts extends AppCompatActivity {
         dummyData();
         addContact();
         viewContact();
+        backToMenu();
 
         deleteRecord = getIntent();
         deleteContact();
@@ -67,12 +69,15 @@ public class Contacts extends AppCompatActivity {
         });
     }
 
-    public void dummyData(){
+    public void backToMenu(){
+        btnGoBackBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+    }
 
-        name.add("Tester Anderson");
-        age.add(20);
-        contactNum.add("0917 315 8549");
-        email.add("tester@gmail.com");
+    public void dummyData(){
 
         if (getIntent().hasExtra("id_name")) {
             name.add(getIntent().getStringExtra("id_name"));
@@ -109,7 +114,7 @@ public class Contacts extends AppCompatActivity {
         if(getIntent().hasExtra("delete_at_index")){
             int index = deleteRecord.getIntExtra("delete_at_index", -1);
 
-            if (index != -1) {
+            if (index >= 0 && index < name.size()) {
                 name.remove(index);
                 age.remove(index);
                 contactNum.remove(index);
