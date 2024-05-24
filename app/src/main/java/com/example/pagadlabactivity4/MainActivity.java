@@ -11,9 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnAverage, btnContacts;
+    public static ArrayList<String> name, contactNum, email;
+    public static ArrayList<Integer> age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         btnAverage = findViewById(R.id.btnAverage);
         btnContacts = findViewById(R.id.btnContacts);
+
+        name = new ArrayList<>();
+        contactNum = new ArrayList<>();
+        email = new ArrayList<>();
+        age = new ArrayList<>();
 
         btnAverage.setOnClickListener(v -> {
             Intent intent = new Intent(this, AverageCalculator.class);

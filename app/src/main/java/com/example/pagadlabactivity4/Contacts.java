@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class Contacts extends AppCompatActivity {
 
     ListView lvContactList;
-    Button btnAddContact, btnGoBackBack;
-    ArrayList<String> name, contactNum, email;
-    ArrayList<Integer> age;
+    Button btnAddContact;
+    public static ArrayList<String> name, contactNum, email;
+    public static ArrayList<Integer> age;
     ArrayAdapter contactListAdapter, contactListNumberAdapter;
     Intent viewContact, deleteRecord;
     @Override
@@ -37,12 +37,11 @@ public class Contacts extends AppCompatActivity {
 
         lvContactList = findViewById(R.id.lvContactList);
         btnAddContact = findViewById(R.id.btnAddContact);
-        btnGoBackBack = findViewById(R.id.btnGoBackBack);
 
-        name = new ArrayList<>();
-        contactNum = new ArrayList<>();
-        email = new ArrayList<>();
-        age = new ArrayList<>();
+        name = MainActivity.name;
+        contactNum = MainActivity.contactNum;
+        email = MainActivity.email;
+        age = MainActivity.age;
 
         contactListAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
         lvContactList.setAdapter(contactListAdapter);
@@ -55,7 +54,6 @@ public class Contacts extends AppCompatActivity {
         dummyData();
         addContact();
         viewContact();
-        backToMenu();
 
         deleteRecord = getIntent();
         deleteContact();
@@ -64,14 +62,6 @@ public class Contacts extends AppCompatActivity {
     public void addContact(){
         btnAddContact.setOnClickListener(v -> {
             Intent intent = new Intent(this, AddContact.class);
-            startActivity(intent);
-            finish();
-        });
-    }
-
-    public void backToMenu(){
-        btnGoBackBack.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         });

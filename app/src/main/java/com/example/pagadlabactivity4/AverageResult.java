@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class AverageResult extends AppCompatActivity {
 
     Button btnBackToCalculate;
-    TextView lblAverageResult;
+    TextView lblAverageResult, lblPassOrFail;
     Intent calculate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class AverageResult extends AppCompatActivity {
     public void init(){
         btnBackToCalculate = findViewById(R.id.btnBackToCalculate);
         lblAverageResult = findViewById(R.id.lblAverageResult);
+        lblPassOrFail = findViewById(R.id.lblPassOrFail);
 
         calculate = getIntent();
     }
@@ -62,19 +63,12 @@ public class AverageResult extends AppCompatActivity {
         lblAverageResult.setText(averageString);
 
         if(average < 75){
-            lblAverageResult.setTextColor(Color.RED);
+            lblPassOrFail.setTextColor(Color.RED);
+            lblPassOrFail.setText("FAILED");
         }
-        else if(average >= 75 && average < 80){
-            lblAverageResult.setTextColor(Color.YELLOW);
-        }
-        else if(average >= 80 && average < 85){
-            lblAverageResult.setTextColor(Color.BLUE);
-        }
-        else if(average >= 85 && average < 90){
-            lblAverageResult.setTextColor(Color.MAGENTA);
-        }
-        else{
-            lblAverageResult.setTextColor(Color.GREEN);
+        else {
+            lblPassOrFail.setTextColor(Color.GREEN);
+            lblPassOrFail.setText("PASSED");
         }
     }
 }

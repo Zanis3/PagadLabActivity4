@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddContact extends AppCompatActivity {
 
-    Button btnSubmitContact, btnBack, btnClear;
+    Button btnSubmitContact, btnClear;
     EditText txtName, txtAge, txtEmail, txtContactNum;
     String name, contactNum, email;
     int age;
@@ -37,13 +37,11 @@ public class AddContact extends AppCompatActivity {
         txtEmail = findViewById(R.id.txtEmail);
 
         btnSubmitContact = findViewById(R.id.btnSubmitContact);
-        btnBack = findViewById(R.id.btnBack);
         btnClear = findViewById(R.id.btnClear);
 
         intent = new Intent(this, Contacts.class);
 
         submitContact();
-        returnToList();
         clearText();
     }
 
@@ -64,7 +62,7 @@ public class AddContact extends AppCompatActivity {
                 else{
                     age = Integer.parseInt(strAge);
                     int check = 0;
-                    if(age < 0 || age > 116){
+                    if(age < 1 || age > 116){
                         Toast.makeText(getApplicationContext(),"Age is not acceptable. Please try again.",
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -94,14 +92,6 @@ public class AddContact extends AppCompatActivity {
                     }
                 }
             }
-        });
-    }
-
-    public void returnToList(){
-        btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Contacts.class);
-            startActivity(intent);
-            finish();
         });
     }
 

@@ -5,51 +5,52 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    android:foregroundTint="#FFFFFF"
     tools:context=".Contacts">
 
     <TextView
         android:id="@+id/txtContactsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Contacts List"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <ListView
         android:id="@+id/lvContactList"
-        android:layout_width="407dp"
-        android:layout_height="575dp"
+        android:layout_width="414dp"
+        android:layout_height="519dp"
+        android:animationCache="true"
+        android:background="#1C671E"
+        android:backgroundTint="#356836"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintVertical_bias="0.452" />
 
     <Button
         android:id="@+id/btnAddContact"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#FFFFFF"
         android:text="Add Contact"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
+        app:layout_constraintVertical_bias="0.947" />
 
-    <Button
-        android:id="@+id/btnGoBackBack"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
 </androidx.constraintlayout.widget.ConstraintLayout>
